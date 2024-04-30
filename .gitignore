@@ -1,2 +1,7 @@
 # Project exclude paths
 /target/
+src/.DS_Store
+src/main/.DS_Store
+src/test/.DS_Store
+src/test/java/.DS_Store
+.idea/compiler.xml

@@ -4,7 +4,6 @@ import BaseLayer.BaseClass;
 import PageLayer.LoginPage;
 import UtilsLayer.ExcelReader;
 import UtilsLayer.ExcelUtility;
-import UtilsLayer.UtilClass;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,7 +14,6 @@ import org.junit.Assert;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 public class LoginPageStepDef extends BaseClass {
 
@@ -102,8 +100,6 @@ public class LoginPageStepDef extends BaseClass {
             System.out.println("Get dataRow ******" +dataRow);
         }
 
-//        loginPage.enterUserName(username);
-//        loginPage.enterPassWord(password);
     }
 
     @When("When user enters credentials for {int} and sheetname {string}")
@@ -113,33 +109,24 @@ public class LoginPageStepDef extends BaseClass {
         List<Map<String,String>> testData =
                 reader.getData(p.getProperty("filepath"), sheetName);
 
-//      String  TC =testData.get(testCase).get("TESTCASES");
-//      int TC1 = Integer.parseInt(TC);
-
         String username,password;
-//        if (testCase.equals(TC1)){
-//        testCase = testCase-1;
+
         for (int i = 0; i < testData.size()-1; i++) {
             String number =testData.get(i).get("TESTCASES");
             int convertedNumber =Integer.parseInt(number);
-            if (testCase==convertedNumber){
-            String status = testData.get(i).get("STATUS");
-            if (status.equalsIgnoreCase("YES")) {
-                username = testData.get(i).get("USERNAME");
-                password = testData.get(i).get("PASSWORD");
-
-                loginPage.enterUserName(username);
-                loginPage.enterPassWord(password);
-//                loginPage.clickOnLogin();
-//                loginPage.getLoginPageTitle();
-//                loginPage.getLogout();
-            }
-        }
-            else {
-                System.out.println("Test case execution status is NO");
+            if (testCase==convertedNumber) {
+                String status = testData.get(i).get("STATUS");
+                if (status.equalsIgnoreCase("YES")) {
+                    username = testData.get(i).get("USERNAME");
+                    password = testData.get(i).get("PASSWORD");
+                    loginPage.enterUserName(username);
+                    loginPage.enterPassWord(password);
+                } else {
+                    System.out.println("Test case execution status is NO");
                 loginPage.quitBrowser();
+                }
             }
         }
-        //        contactUsPage.filldata(name,email,Subject,message);
+
     }
 }
