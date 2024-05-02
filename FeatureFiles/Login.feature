@@ -6,15 +6,15 @@ Feature: Login page feature
 
   Scenario Outline: Login with correct credentials
     Given user is on login page
-    When When user enters credentials for <TestCaseNumber> and sheetname "<SheetName>"
+    When user enters credentials for <TestCaseNumber> and sheetname "<SheetName>"
     And user clicks on Login button
     Then user gets the title of the page
     And page title should be "Automation Exercise"
     And user verify logout button
+    And User close a browser
 
     Examples:
       | TestCaseNumber | SheetName |
       | 1              | Login     |
-#      | 2              | Login     |
-#      | 3              | Login         |
-#      | TC4      | Login     |
+      | 2              | Login     |
+      | 3              | Login         |

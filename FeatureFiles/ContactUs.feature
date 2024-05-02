@@ -9,6 +9,7 @@ Feature: Contact Us feature
     When user fills the form from given sheetname "<Name>" and rownumber "<Email>" and "<Subject>" and "<Message>"
     And user clicks on submit button
     Then it shows a successful message "Success! Your details have been submitted successfully."
+    And User close a browser
 
     Examples:
       | Name   | Email            | Subject   | Message               |

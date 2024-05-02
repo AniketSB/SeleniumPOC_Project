@@ -4,6 +4,7 @@ import BaseLayer.BaseClass;
 import PageLayer.LoginPage;
 import UtilsLayer.ExcelReader;
 import UtilsLayer.ExcelUtility;
+import UtilsLayer.UtilClass;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -102,8 +103,13 @@ public class LoginPageStepDef extends BaseClass {
 
     }
 
-    @When("When user enters credentials for {int} and sheetname {string}")
-    public void when_user_enters_credentials_for_and_sheetname(Integer testCase, String sheetName) throws IOException, InvalidFormatException {
+    @And("User close a browser")
+    public void userCloseABrowser() throws IOException {
+        UtilClass.closeBrowser();
+    }
+
+    @When("user enters credentials for {} and sheetname {string}")
+    public void userEntersCredentialsForAndSheetname(Integer testCase, String sheetName) throws IOException {
         // Write code here that turns the phrase above into concrete actions
         ExcelReader reader = new ExcelReader();
         List<Map<String,String>> testData =
@@ -123,10 +129,9 @@ public class LoginPageStepDef extends BaseClass {
                     loginPage.enterPassWord(password);
                 } else {
                     System.out.println("Test case execution status is NO");
-                loginPage.quitBrowser();
+                    loginPage.quitBrowser();
                 }
             }
         }
-
     }
 }

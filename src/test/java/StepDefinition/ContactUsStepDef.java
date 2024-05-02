@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 
 public class ContactUsStepDef extends BaseClass {
     ContactUs contactUs = new ContactUs();
@@ -23,11 +24,13 @@ public class ContactUsStepDef extends BaseClass {
     @And("user clicks on submit button")
     public void user_clicks_on_submit_button() {
         contactUs.submitdata();
-//        contactUs.handleAlert("OK");
+        contactUs.handleAlert("OK");
     }
 
     @Then("it shows a successful message {string}")
-    public void it_shows_a_successful_message(String arg0) {
-        contactUs.getSuccessMessage();
+    public void it_shows_a_successful_message(String ExpectedString) {
+        String SuccessMsg = contactUs.getSuccessMessage();
+        Assert.assertEquals(SuccessMsg,ExpectedString);
+
     }
 }

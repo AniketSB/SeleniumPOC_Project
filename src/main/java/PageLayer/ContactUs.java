@@ -48,7 +48,6 @@ public class ContactUs extends BaseClass {
         UtilClass.enterdata(email,femail);
         UtilClass.enterdata(subject,fsubject);
         UtilClass.enterdata(message,fmessage);
-//        contactUsPage.filldata("abc","abc@gmail.com","shopping,online shopping");
     }
 
     public void submitdata()

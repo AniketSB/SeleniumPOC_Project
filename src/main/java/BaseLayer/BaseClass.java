@@ -11,6 +11,9 @@ import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 public class BaseClass {
 	public static WebDriver driver;
@@ -22,7 +25,7 @@ public class BaseClass {
 		try
 		{
 		FileInputStream f=new FileInputStream("./src/main/java/ConfigueLayer/Config.Properties");
-	p.load(f);	
+	p.load(f);
 		}
 		catch(Exception e)
 		{
@@ -30,7 +33,6 @@ public class BaseClass {
 		}
 	
 	}
-	
 
 	public static void initialization() throws IOException
 	{
@@ -45,13 +47,10 @@ public class BaseClass {
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		driver.get(p.getProperty("url"));
 		captureRequest.captureHttpRequest(driver);
-
 	}
-
 
 	public static void closeBrowser() throws IOException
 	{
 		driver.quit();
 	}
-
 }

@@ -1,12 +1,12 @@
 package UtilsLayer;
 
-import dev.failsafe.internal.util.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v122.network.Network;
-import org.openqa.selenium.devtools.v122.network.model.RequestId;
-import org.openqa.selenium.devtools.v122.network.model.Response;
+import org.openqa.selenium.devtools.v121.network.Network;
+import org.openqa.selenium.devtools.v121.network.model.RequestId;
+import org.openqa.selenium.devtools.v121.network.model.Response;
+import org.testng.Assert;
 
 import java.util.Optional;
 import java.util.Properties;

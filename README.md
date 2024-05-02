@@ -7,4 +7,8 @@ How to run:
 
 ** API Integration with Selenium **
 1. Visit https://weatherstack.com/ws_api.php?ip=202.43.120.243
-2. 
+
+
+
+** REPORTING
+1. Cucumber HTML report
