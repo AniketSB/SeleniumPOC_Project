@@ -9,7 +9,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Assert;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ import java.util.Map;
 
 public class LoginPageStepDef extends BaseClass {
 
-    LoginPage loginPage;
+    LoginPage loginPage=new LoginPage();
     private static String title;
 
     @Given("User launch a browser")
@@ -38,7 +37,7 @@ public class LoginPageStepDef extends BaseClass {
         String logoutText= loginPage.getLogout();
         Assert.assertEquals("Logout is not getting displayed",logoutText,"Logout");
         loginPage.clickOnLogout();
-        loginPage.quitBrowser();
+//        BaseClass.apiRequests();
     }
 
     @When("user gets the title of the page")
@@ -79,22 +78,6 @@ public class LoginPageStepDef extends BaseClass {
     @When("user enters credentials for {string} and sheetname {string}")
     public void userEntersCredentialsForAndSheetname(String testCase, String sheetName) throws IOException {
 
-
-//        ExcelReader reader = new ExcelReader();
-//        List<Map<String,String>> testData =
-//                reader.getData(p.getProperty("filepath"), sheetName);
-//        int testCaseNumber = Integer.parseInt(testCase);
-//
-//        String username =testData.get(testCaseNumber).get("TESTCASES");
-//
-//        String email = testData.get(testCaseNumber).get("USERNAME");
-//        String Subject = testData.get(testCaseNumber).get("PASSWORD");
-//
-//
-//        loginPage.enterUserName();
-//        loginPage.enterPassWord();
-//        contactUsPage.filldata(name,email,Subject,message);
-
         Object[][] testData = ExcelUtility.readExcel(p.getProperty("filepath"),sheetName,testCase);
         for (Object[] dataRow: testData) {
 //			username = (String) dataRow[0];
@@ -115,6 +98,7 @@ public class LoginPageStepDef extends BaseClass {
         List<Map<String,String>> testData =
                 reader.getData(p.getProperty("filepath"), sheetName);
 
+
         String username,password;
 
         for (int i = 0; i < testData.size()-1; i++) {
@@ -133,5 +117,11 @@ public class LoginPageStepDef extends BaseClass {
                 }
             }
         }
+    }
+
+    @And("user sends and receive api requests")
+    public void userSendsAndReceiveApiRequests() {
+		driver.get(p.getProperty("apiUri"));
+//        loginPage.apiCalls();
     }
 }

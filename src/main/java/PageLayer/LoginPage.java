@@ -1,5 +1,6 @@
 package PageLayer;
 
+import UtilsLayer.CaptureRequest;
 import UtilsLayer.ExcelUtility;
 import UtilsLayer.UtilClass;
 import org.openqa.selenium.By;
@@ -101,6 +102,10 @@ public class LoginPage extends BaseClass {
 	public void quitBrowser(){
 		driver.quit();
 	}
+
+//	public void apiCalls(){
+//		CaptureRequest.captureHttpRequest(driver);
+//	}
 	
 }
 

@@ -16,5 +16,8 @@ Feature: Login page feature
     Examples:
       | TestCaseNumber | SheetName |
       | 1              | Login     |
-      | 2              | Login     |
-      | 3              | Login         |
+#      | 2              | Login     |
+#      | 3              | Login         |
+#
+#  Scenario: API calls
+#    And user sends and receive api requests

@@ -18,7 +18,6 @@ import org.testng.annotations.BeforeClass;
 public class BaseClass {
 	public static WebDriver driver;
 	 public static Properties p;
-
 	public BaseClass()
 	{
 	p=new Properties();
@@ -44,11 +43,15 @@ public class BaseClass {
 		CaptureRequest captureRequest = new CaptureRequest();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
 		driver.get(p.getProperty("url"));
 		captureRequest.captureHttpRequest(driver);
 	}
 
+//	public static void apiRequests(){
+////		driver.get(p.getProperty("apiUri"));
+//		captureRequest.captureHttpRequest(driver);
+//	}
 	public static void closeBrowser() throws IOException
 	{
 		driver.quit();

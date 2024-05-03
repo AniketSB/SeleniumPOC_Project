@@ -6,7 +6,8 @@ How to run:
 
 
 ** API Integration with Selenium **
-1. Visit https://weatherstack.com/ws_api.php?ip=202.43.120.243
+1. Visit https://automationexercise.com/
+2. Write api calls on excel file WriteData.xlsx
 
 
 
